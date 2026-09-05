@@ -1,0 +1,64 @@
+# Kalamine keyboard layout descriptor for Diacra.
+#
+# Based on EurKEY with AltGr WEur vowel diacritic placements.
+#
+# The Greek "layer" in EurKEY is a dead-key prefix, not a normal modifier
+# layer: AltGr+m emits dead_greek, then the next letter composes Greek.
+#
+# Missing characters from EurKEY (replaced by Altgr WEur mappings):
+# - · (was AltGr+;) replaced by ô from Altgr WEur
+# - ×/÷ (were AltGr+/Shift+AltGr+=) replaced by °/*˚ from Altgr WEur
+# - þ/Þ (was AltGr+T) replaced by ø/Ø from Altgr WEur
+# - ð/Ð (was AltGr+D) replaced by é/É from Altgr WEur
+# - § (was Shift+AltGr+S) - no replacement found, character missing
+# - … (was Shift+AltGr+/) - no replacement found, character missing
+# - ĳ/Ĳ (was AltGr+\) - now on ISO IntlBackslash key
+#
+name        = "Diacra"
+name8       = "diacra"
+locale      = "en"
+variant     = "standard"
+author      = "Alejandro Exojo"
+description = "Southern European letters and symbols on a US QWERTY layout"
+url         = "TODO"
+version     = "0.1"
+geometry    = "ISO"
+
+base = '''
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━━┓
+│ ~   │ !   │ @   │ #   │ $   │ %   │ ^   │ &   │ *   │ (   │ )   │ _   │ +   ┃          ┃
+│ `   │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │ -   │ =   ┃ ⌫        ┃
+┢━━━━━┷━━┱──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┺━━┳━━━━━━━┫
+┃        ┃ Q   │ W   │ E   │ R   │ T   │ Y   │ U   │ I   │ O   │ P   │ {   │ }   ┃       ┃
+┃ ↹      ┃     │     │     │     │     │     │     │     │     │     │ [   │ ]   ┃       ┃
+┣━━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┺┓  ⏎   ┃
+┃         ┃ A   │ S   │ D   │ F   │ G   │ H   │ J   │ K   │ L   │ :   │ "   │ |   ┃      ┃
+┃ ⇬       ┃     │     │     │     │     │     │     │     │     │ ;   │ '   │ \   ┃      ┃
+┣━━━━━━┳━━┹──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┲━━┷━━━━━┻━━━━━━┫
+┃      ┃ >   │ Z   │ X   │ C   │ V   │ B   │ N   │ M   │ <   │ >   │ ?   ┃               ┃
+┃ ⇧    ┃ <   │     │     │     │     │     │     │     │ ,   │ .   │ /   ┃ ⇧             ┃
+┣━━━━━━┻┳━━━━┷━━┳━━┷━━━━┱┴─────┴─────┴─────┴─────┴─────┴─┲━━━┷━━━┳━┷━━━━━╋━━━━━━━┳━━━━━━━┫
+┃       ┃       ┃       ┃                                ┃       ┃       ┃       ┃       ┃
+┃ Ctrl  ┃ super ┃ Alt   ┃ ␣                              ┃ AltGr ┃ super ┃ menu  ┃ Ctrl  ┃
+┗━━━━━━━┻━━━━━━━┻━━━━━━━┹────────────────────────────────┺━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
+'''
+
+altgr = '''
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━━┓
+│  *~ │  *˙ │  *” │  *¯ │   ¥ │   £ │  *ˇ │   ‚ │  *µ │   ‘ │   ’ │   — │  *˚ ┃          ┃
+│  *` │   ¡ │   ª │   º │   ¢ │   € │  *^ │   „ │   ß │   “ │   ” │   – │   ° ┃ ⌫        ┃
+┢━━━━━┷━━┱──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┺━━┳━━━━━━━┫
+┃        ┃     │     │     │     │     │     │     │     │     │     │   ‹ │   › ┃       ┃
+┃ ↹      ┃   å │   æ │   ë │   è │   ø │   ù │   ü │   ï │   ö │   ò │   « │   » ┃       ┃
+┣━━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┺┓  ⏎   ┃
+┃         ┃     │     │     │     │     │     │     │     │     │     │  *¨ │     ┃      ┃
+┃ ⇬       ┃   ä │   à │   é │   ê │   î │   û │   ú │   í │   ó │   ô │  *´ │     ┃      ┃
+┣━━━━━━┳━━┹──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┲━━┷━━━━━┻━━━━━━┫
+┃      ┃   ¬ │     │     │     │     │     │     │     │  *˛ │     │  */ ┃               ┃
+┃ ⇧    ┃  ** │   á │   â │   ç │   ã │   õ │   ñ │   ì │  *¸ │   œ │   ¿ ┃ ⇧             ┃
+┣━━━━━━┻┳━━━━┷━━┳━━┷━━━━┱┴─────┴─────┴─────┴─────┴─────┴─┲━━━┷━━━┳━┷━━━━━╋━━━━━━━┳━━━━━━━┫
+┃       ┃       ┃       ┃                                ┃       ┃       ┃       ┃       ┃
+┃ Ctrl  ┃ super ┃ Alt   ┃ ␣                              ┃ AltGr ┃ super ┃ menu  ┃ Ctrl  ┃
+┗━━━━━━━┻━━━━━━━┻━━━━━━━┹────────────────────────────────┺━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
+'''
+
