@@ -54,3 +54,30 @@ extend-select = ["I"]
 
 [tool.mypy]
 ignore_missing_imports = true
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.pypi-dependencies]
+kalamine = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+
+# pixi cheat sheet for this repo (run from the repo root):
+#   pixi run test           build layouts into dist/, then pytest
+#   pixi run lint           ruff format --check, ruff check, mypy
+#   pixi shell -e dev       activate the dev environment interactively
+# Tasks live in the dev environment; plain `pixi run` finds them there.
+# The "dev" feature name matches the identically named extra in
+# [project.optional-dependencies], so mypy/ruff/twine/types-PyYAML/docutils
+# come along for free.
+[tool.pixi.feature.dev.dependencies]
+pytest = ">=9.0.3,<10"
+lxml = ">=6.1.1,<7"
+
+[tool.pixi.feature.dev.tasks]
+test = "kalamine build layouts/*.toml && pytest"
+lint = "ruff format --check kalamine && ruff check kalamine && mypy kalamine"
