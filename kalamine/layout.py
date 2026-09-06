@@ -24,7 +24,7 @@ from .utils import (
 
 
 def load_layout(layout_path: Path) -> Dict:
-    """Load the TOML/YAML layout description data (and its ancessor, if any)."""
+    """Load the TOML/YAML layout description data (and its ancestors, if any)."""
 
     def load_descriptor(file_path: Path) -> Dict:
         if file_path.suffix in [".yaml", ".yml"]:
@@ -34,15 +34,30 @@ def load_layout(layout_path: Path) -> Dict:
         with file_path.open(mode="rb") as dfile:
             return tomllib.load(dfile)
 
-    try:
-        cfg = load_descriptor(layout_path)
+    def load_recursive(file_path: Path, visited: Optional[Set[str]] = None) -> Dict:
+        if visited is None:
+            visited = set()
+
+        resolved_path = str(file_path.resolve())
+        if resolved_path in visited:
+            raise Exception(f"Circular layout inclusion detected: {file_path}")
+        visited.add(resolved_path)
+
+        cfg = load_descriptor(file_path)
         if "name" not in cfg:
-            cfg["name"] = layout_path.stem
+            cfg["name"] = file_path.stem
+
         if "extends" in cfg:
-            parent_path = layout_path.parent / cfg["extends"]
-            ext = load_descriptor(parent_path)
-            ext.update(cfg)
-            cfg = ext
+            parent_path = file_path.parent / cfg["extends"]
+            parent_cfg = load_recursive(parent_path, visited)
+            merged = parent_cfg.copy()
+            merged.update(cfg)
+            cfg = merged
+
+        return cfg
+
+    try:
+        cfg = load_recursive(layout_path)
         if "version" in cfg:
             version_check = cfg["version"].split(".")
             if len(version_check) > 3:
