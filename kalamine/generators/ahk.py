@@ -67,7 +67,9 @@ def ahk_keymap(layout: "KeyboardLayout", altgr: bool = False) -> List[str]:
 
             desc = f" ; {symbol}" if symbol != sym else ""
             act = json.dumps(actions, ensure_ascii=False)
-            output.append(f'{prefixes[i]}{sc}::SendKey("{sym}", {act}){desc}')
+            # the raw symbol may itself be a whitespace character (e.g. on the
+            # space bar): rstrip avoids emitting trailing whitespace then.
+            output.append(f'{prefixes[i]}{sc}::SendKey("{sym}", {act}){desc}'.rstrip())
 
         if output[-1]:
             output.append("")
