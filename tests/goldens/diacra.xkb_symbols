@@ -112,10 +112,10 @@ xkb_symbols "standard" {
     key <AB11> {[ VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; //
     key <TLDE> {[ grave           , asciitilde      , dead_grave      , dead_tilde      , VoidSymbol      , VoidSymbol      ]}; // ` ~ ` ~
     key <BKSL> {[ backslash       , bar             , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; // \ |
-    key <LSGT> {[ less            , greater         , ISO_Level5_Latch, notsign         , VoidSymbol      , VoidSymbol      ]}; // < > ' ¬
+    key <LSGT> {[ less            , greater         , ISO_Level5_Latch, notsign         , VoidSymbol      , VoidSymbol      ]}; // < > * ¬
 
     // Space bar
-    key <SPCE> {[ space           , space           , space           , space           , apostrophe      , apostrophe      ]}; //         ' '
+    key <SPCE> {[ space           , space           , space           , space           , asterisk        , asterisk        ]}; //         * *
 
     // The AltGr key is an ISO_Level3_Shift:
     include "level3(ralt_switch)"

@@ -117,8 +117,8 @@ SPACEBAR = {
     "shift": " ",
     "altgr": " ",
     "altgr_shift": " ",
-    "1dk": "'",
-    "1dk_shift": "'",
+    "1dk": "*",
+    "1dk_shift": "*",
 }
 
 

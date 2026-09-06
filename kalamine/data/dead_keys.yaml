@@ -19,8 +19,8 @@
   name: 1dk
   base: ''        # computed from the imported layout
   alt:  ''        # computed from the imported layout
-  alt_space: "'"  # apostrophe (can be overriden by the `space.1dk` key)
-  alt_self:  "'"  # apostrophe (can be overriden from the imported layout)
+  alt_space: '*'  # U+002A ASTERISK (can be overriden by the `space.1dk` key)
+  alt_self:  '*'  # U+002A ASTERISK (can be overriden from the imported layout)
 
 - char: '*`'
   name: grave

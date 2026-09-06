@@ -821,7 +821,7 @@ def test_intl():
         <!-- Space bar -->
         <action id="spce_x0020">
           <when state="none"       output="&#x0020;" />
-          <when state="1dk"        output="'" />
+          <when state="1dk"        output="*" />
           <when state="grave"      output="`" />
           <when state="circumflex" output="^" />
           <when state="tilde"      output="~" />
@@ -829,7 +829,7 @@ def test_intl():
         </action>
         <action id="spce_x00a0">
           <when state="none"       output="&#x00a0;" />
-          <when state="1dk"        output="'" />
+          <when state="1dk"        output="*" />
           <when state="grave"      output="`" />
           <when state="circumflex" output="^" />
           <when state="tilde"      output="~" />
@@ -837,7 +837,7 @@ def test_intl():
         </action>
         <action id="spce_x202f">
           <when state="none"       output="&#x202f;" />
-          <when state="1dk"        output="'" />
+          <when state="1dk"        output="*" />
           <when state="grave"      output="`" />
           <when state="circumflex" output="^" />
           <when state="tilde"      output="~" />

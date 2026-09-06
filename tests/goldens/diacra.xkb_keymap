@@ -132,10 +132,10 @@ xkb_keymap {
     key <AB11> {[ VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ],[ VoidSymbol      , VoidSymbol      ]}; //
     key <TLDE> {[ grave           , asciitilde      , VoidSymbol      , VoidSymbol      ],[ dead_grave      , dead_tilde      ]}; // ` ~     ` ~
     key <BKSL> {[ backslash       , bar             , VoidSymbol      , VoidSymbol      ],[ VoidSymbol      , VoidSymbol      ]}; // \ |
-    key <LSGT> {[ less            , greater         , VoidSymbol      , VoidSymbol      ],[ ISO_Level3_Latch, notsign         ]}; // < >     ' ¬
+    key <LSGT> {[ less            , greater         , VoidSymbol      , VoidSymbol      ],[ ISO_Level3_Latch, notsign         ]}; // < >     * ¬
 
     // Space bar
-    key <SPCE> {[ space           , space           , apostrophe      , apostrophe      ],[ space           , space           ]}; //     ' '
+    key <SPCE> {[ space           , space           , asterisk        , asterisk        ],[ space           , space           ]}; //     * *
 
     // AltGr
     // Note: the `ISO_Level5_Latch` here is meaningless but helps with Chromium.

@@ -108,8 +108,6 @@ def test_no_dead_key_id_twice(layout_name: str) -> None:
     DEADKEY 0027 in KLC.
     """
     ids = klc_dead_key_ids(layout_name)
-    if len(ids) != len(set(ids)):
-        pytest.xfail("known DEADKEY 0027 collision on the unfixed baseline")
     assert len(ids) == len(set(ids)), f"duplicate dead-key IDs: {sorted(ids)}"
 
 

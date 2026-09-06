@@ -96,6 +96,6 @@ xkb_symbols "ansi" {
     key <LSGT> {[ VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; //
 
     // Space bar
-    key <SPCE> {[ space           , space           , apostrophe      , apostrophe      ]}; //     ' '
+    key <SPCE> {[ space           , space           , asterisk        , asterisk        ]}; //     * *
 };
 // vim: ft=xkb:fdm=indent:ts=4:nowrap

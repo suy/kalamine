@@ -80,7 +80,7 @@ def test_ansi():
         key <LSGT> {[ VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; //
 
         // Space bar
-        key <SPCE> {[ space           , space           , apostrophe      , apostrophe      ]}; //     ' '
+        key <SPCE> {[ space           , space           , asterisk        , asterisk        ]}; //     * *
         """
     )
 
@@ -159,7 +159,7 @@ def test_intl():
         key <LSGT> {[ backslash       , bar             , VoidSymbol      , VoidSymbol      ]}; // \\ |
 
         // Space bar
-        key <SPCE> {[ space           , space           , apostrophe      , apostrophe      ]}; //     ' '
+        key <SPCE> {[ space           , space           , asterisk        , asterisk        ]}; //     * *
         """
     )
 

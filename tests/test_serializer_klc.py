@@ -127,7 +127,7 @@ def test_intl_keymap():
         0d	OEM_PLUS	0	003d	002b	-1	-1	// = +
         1a	OEM_3	0	005b	007b	-1	-1	// [ {
         1b	OEM_4	0	005d	007d	-1	-1	// ] }
-        28	OEM_5	0	0027@	0022@	-1	-1	// ' "
+        28	OEM_5	0	002a@	0022@	-1	-1	// * "
         29	OEM_6	0	0060@	007e@	-1	-1	// ` ~
         2b	OEM_7	0	005c	007c	-1	-1	// \\ |
         56	OEM_102	0	005c	007c	-1	-1	// \\ |
@@ -141,7 +141,7 @@ def test_intl_deadkeys():
     assert len(dk_index) == 5
     assert dk_index == split(
         """
-        0027	"1DK"
+        002a	"1DK"
         0060	"GRAVE"
         005e	"CIRCUMFLEX"
         007e	"TILDE"
@@ -154,8 +154,8 @@ def test_intl_deadkeys():
     assert deadkeys == split(
         """
         // DEADKEY: 1DK //{{{
-        DEADKEY	0027
-        0027	0027	// ' -> '
+        DEADKEY	002a
+        002a	0027	// * -> '
         0045	00c9	// E -> É
         0065	00e9	// e -> é
         0055	00da	// U -> Ú
@@ -169,7 +169,7 @@ def test_intl_deadkeys():
         0043	00c7	// C -> Ç
         0063	00e7	// c -> ç
         002e	2026	// . -> …
-        0020	0027	//   -> '
+        0020	002a	//   -> *
         //}}}
 
         // DEADKEY: GRAVE //{{{

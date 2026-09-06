@@ -1351,7 +1351,7 @@
     <!-- Space bar -->
     <action id="spce_x0020">
       <when state="none"       output="&#x0020;" />
-      <when state="1dk"        output="'" />
+      <when state="1dk"        output="*" />
       <when state="grave"      output="`" />
       <when state="acute"      output="'" />
       <when state="doubleacute" output="”" />
@@ -1369,7 +1369,7 @@
     </action>
     <action id="spce_x00a0">
       <when state="none"       output="&#x00a0;" />
-      <when state="1dk"        output="'" />
+      <when state="1dk"        output="*" />
       <when state="grave"      output="`" />
       <when state="acute"      output="'" />
       <when state="doubleacute" output="”" />
@@ -1387,7 +1387,7 @@
     </action>
     <action id="spce_x202f">
       <when state="none"       output="&#x202f;" />
-      <when state="1dk"        output="'" />
+      <when state="1dk"        output="*" />
       <when state="grave"      output="`" />
       <when state="acute"      output="'" />
       <when state="doubleacute" output="”" />
@@ -1406,7 +1406,7 @@
   </actions>
 
   <terminators>
-    <when state="1dk"        output="'" />
+    <when state="1dk"        output="*" />
     <when state="grave"      output="`" />
     <when state="acute"      output="´" />
     <when state="doubleacute" output="˝" />

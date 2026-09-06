@@ -105,7 +105,7 @@ xkb_keymap {
     key <LSGT> {[ backslash       , bar             , VoidSymbol      , VoidSymbol      ]}; // \ |
 
     // Space bar
-    key <SPCE> {[ space           , space           , apostrophe      , apostrophe      ]}; //     ' '
+    key <SPCE> {[ space           , space           , asterisk        , asterisk        ]}; //     * *
   };
 };
 // vim: ft=xkb:fdm=indent:ts=2:nowrap

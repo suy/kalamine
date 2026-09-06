@@ -111,15 +111,14 @@ LAYOUT //{{{
 28	OEM_5	0	0027	0022	-1	-1	0027@	0022@	// ' " ' "
 29	OEM_6	0	0060	007e	-1	-1	0060@	007e@	// ` ~ ` ~
 2b	OEM_7	0	005c	007c	-1	-1	-1	-1	// \ |
-56	OEM_102	0	003c	003e	-1	-1	0027@	00ac	// < > ' ¬
+56	OEM_102	0	003c	003e	-1	-1	002a@	00ac	// < > * ¬
 39	SPACE	0	0020	0020	-1	-1	0020	0020	//
 53	DECIMAL	0	002e	002e	-1	-1	-1	-1	// FULL STOP, FULL STOP, <none>, <none>, <none>
 //}}}
 
 // DEADKEY: 1DK //{{{
-DEADKEY	0027
-0027	0027	// ' -> '
-0020	0027	//   -> '
+DEADKEY	002a
+0020	002a	//   -> *
 //}}}
 
 // DEADKEY: GRAVE //{{{
@@ -636,7 +635,7 @@ KEYNAME_EXT //{{{
 //}}}
 
 KEYNAME_DEAD //{{{
-0027	"1DK"
+002a	"1DK"
 0060	"GRAVE"
 0027	"ACUTE"
 201d	"DOUBLEACUTE"
