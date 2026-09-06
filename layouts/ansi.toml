@@ -1,6 +1,6 @@
 name = "qwerty-ansi"
 name8 = "q-ansi"
-locale = "us"
+locale = "en-US"
 variant = "ansi"
 description = "standard QWERTY-US layout"
 url = "https://OneDeadKey.github.com/kalamine/"

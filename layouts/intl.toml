@@ -1,6 +1,6 @@
 name = "qwerty-intl"
 name8 = "q-intl"
-locale = "us"
+locale = "en-US"
 variant = "intl"
 description = "QWERTY layout, international variant"
 url = "https://OneDeadKey.github.com/kalamine/"

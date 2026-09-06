@@ -1,7 +1,7 @@
 name = "qwerty-prog"
 name8 = "q-prog"
 variant = "prog"
-locale = "us"
+locale = "en-US"
 description = "QWERTY-intl layout, developer variant"
 url = "https://OneDeadKey.github.com/kalamine/"
 version = "0.6.0"
