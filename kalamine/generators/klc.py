@@ -191,7 +191,8 @@ def klc_deadkeys(layout: "KeyboardLayout") -> List[str]:
         output.append(f"DEADKEY\t{hex_ord(dk[' '])}")
 
         for base, alt in dk.items():
-            if base == k and alt in base:
+            # Skip if a dead char maps to itself.
+            if base == k and alt == k[1]:
                 continue
 
             if base in layout.dead_keys:
@@ -334,7 +335,8 @@ def c_deadkeys(layout: "KeyboardLayout") -> List[str]:
         output.append(f"// DEADKEY: {DK_INDEX[k].name.upper()}")
 
         for base, alt in dk.items():
-            if base == k and alt in base:
+            # Skip if a dead char maps to itself.
+            if base == k and alt == k[1]:
                 continue
 
             if base in layout.dead_keys:
