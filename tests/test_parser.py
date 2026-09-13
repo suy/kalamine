@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from kalamine import KeyboardLayout, load_layout
+from kalamine import KeyboardLayout, LayoutError, load_layout
 
 from .util import get_layout_dict
 from kalamine.utils import Layer
@@ -138,13 +138,24 @@ def test_circular_extends(tmp_path: Path) -> None:
     (tmp_path / "a.toml").write_text('extends = "b.toml"\nname = "layout-a"\n')
     (tmp_path / "b.toml").write_text('extends = "a.toml"\nname = "layout-b"\n')
 
-    with pytest.raises(SystemExit):
+    with pytest.raises(LayoutError):
         load_layout(tmp_path / "a.toml")
 
     (tmp_path / "self.toml").write_text('extends = "self.toml"\nname = "layout-s"\n')
 
-    with pytest.raises(SystemExit):
+    with pytest.raises(LayoutError):
         load_layout(tmp_path / "self.toml")
+
+
+def test_load_layout_error(tmp_path: Path) -> None:
+    """Parse failures of any kind surface as LayoutError."""
+    (tmp_path / "broken.toml").write_text("this is [ not valid toml\n")
+
+    with pytest.raises(LayoutError):
+        load_layout(tmp_path / "broken.toml")
+
+    with pytest.raises(LayoutError):
+        load_layout(tmp_path / "missing.toml")
 
 
 def test_deep_extends_chain(tmp_path: Path) -> None:

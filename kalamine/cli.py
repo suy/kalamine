@@ -7,9 +7,10 @@ from typing import Iterator, List, Literal, Union
 
 import click
 
+from .cli_utils import load_keyboard_layout
 from .generators import ahk, keylayout, klc, web, xkb
 from .help import create_layout, user_guide
-from .layout import KeyboardLayout, load_layout
+from .layout import KeyboardLayout
 from .server import keyboard_server
 
 
@@ -110,7 +111,7 @@ def build(
     """Convert TOML/YAML descriptions into OS-specific keyboard drivers."""
 
     for input_file in layout_descriptors:
-        layout = KeyboardLayout(load_layout(input_file), angle_mod, qwerty_shortcuts)
+        layout = load_keyboard_layout(input_file, angle_mod, qwerty_shortcuts)
 
         # default: build all in the `dist` subdirectory
         if out == "all":

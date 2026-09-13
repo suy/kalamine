@@ -9,11 +9,15 @@ import click
 from livereload import Server  # type: ignore
 
 from .generators import ahk, keylayout, klc, web, xkb
-from .layout import KeyboardLayout, load_layout
+from .layout import KeyboardLayout, LayoutError, load_layout
 
 
 def keyboard_server(file_path: Path, angle_mod: bool = False) -> None:
-    kb_layout = KeyboardLayout(load_layout(file_path), angle_mod)
+    try:
+        kb_layout = KeyboardLayout(load_layout(file_path), angle_mod)
+    except LayoutError as err:
+        click.echo(f"Error: {err}", err=True)
+        return
 
     host_name = "localhost"
     webserver_port = 1664
@@ -198,7 +202,10 @@ def keyboard_server(file_path: Path, angle_mod: bool = False) -> None:
                     utf8 = ET.tostring(root_element, encoding="unicode")
                     send(utf8, content="image/svg+xml")
             elif self.path == "/":
-                kb_layout = KeyboardLayout(load_layout(file_path), angle_mod)  # refresh
+                try:
+                    kb_layout = KeyboardLayout(load_layout(file_path), angle_mod)
+                except LayoutError:
+                    pass  # refresh failed: keep serving the last valid layout
                 send(main_page(kb_layout, angle_mod), content="text/html")
             else:
                 SimpleHTTPRequestHandler.do_GET(self)

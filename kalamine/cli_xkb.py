@@ -9,8 +9,9 @@ from typing import Dict, List, Optional, Union
 
 import click
 
+from .cli_utils import load_keyboard_layout
 from .generators import xkb
-from .layout import KeyboardLayout, load_layout
+from .layout import KeyboardLayout
 from .xkb_manager import WAYLAND, KbdIndex, XKBManager
 
 
@@ -37,7 +38,7 @@ def apply(filepath: Path, angle_mod: bool) -> None:
             "You appear to be running Wayland, which does not support this operation."
         )
 
-    layout = KeyboardLayout(load_layout(filepath), angle_mod)
+    layout = load_keyboard_layout(filepath, angle_mod)
     with tempfile.NamedTemporaryFile(
         mode="w+", suffix=".xkb_keymap", encoding="utf-8"
     ) as temp_file:
@@ -63,8 +64,7 @@ def install(layouts: List[Path], angle_mod: bool) -> None:
     kb_locales = set()
     kb_layouts = []
     for file in layouts:
-        layout_file = load_layout(file)
-        layout = KeyboardLayout(layout_file, angle_mod)
+        layout = load_keyboard_layout(file, angle_mod)
         kb_layouts.append(layout)
         kb_locales.add(layout.meta["locale"])
 

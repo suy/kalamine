@@ -1,11 +1,10 @@
 import copy
-import sys
 import tomllib
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Type, TypeVar
 
-import click
 import yaml
 
 from .utils import (
@@ -21,6 +20,10 @@ from .utils import (
 ###
 # Helpers
 #
+
+
+class LayoutError(Exception):
+    """A layout description file could not be parsed."""
 
 
 def load_layout(layout_path: Path) -> Dict:
@@ -40,7 +43,7 @@ def load_layout(layout_path: Path) -> Dict:
 
         resolved_path = str(file_path.resolve())
         if resolved_path in visited:
-            raise Exception(f"Circular layout inclusion detected: {file_path}")
+            raise LayoutError(f"Circular layout inclusion detected: {file_path}")
         visited.add(resolved_path)
 
         cfg = load_descriptor(file_path)
@@ -61,8 +64,9 @@ def load_layout(layout_path: Path) -> Dict:
         if "version" in cfg:
             version_check = cfg["version"].split(".")
             if len(version_check) > 3:
-                raise Exception(
-                    f"Layout version number **must** follow `x.y.z` format\nCurrently got `version={cfg['version']}`"
+                raise LayoutError(
+                    f"Layout version number **must** follow `x.y.z` format\n"
+                    f"Currently got `version={cfg['version']}`"
                 )
             missing_digits = (3 - len(version_check)) * ["0"]
             cfg["version"] = ".".join(version_check + missing_digits)
@@ -72,9 +76,7 @@ def load_layout(layout_path: Path) -> Dict:
         return cfg
 
     except Exception as exc:
-        click.echo("File could not be parsed.", err=True)
-        click.echo(f"Error: {exc}.", err=True)
-        sys.exit(1)
+        raise LayoutError(f"File could not be parsed: {exc}") from exc
 
 
 ###
@@ -198,8 +200,8 @@ class KeyboardLayout:
                 # should bevome ['ab05', 'lsgt', 'ab01', 'ab02', 'ab03', 'ab04']
                 last_row.keys[:6] = [last_row.keys[5]] + last_row.keys[:5]
             else:
-                click.echo(
-                    "Warning: geometry does not support angle-mod; ignoring the --angle-mod argument"
+                warnings.warn(
+                    "Geometry does not support angle-mod; ignoring the --angle-mod argument"
                 )
                 self.angle_mod = False
 

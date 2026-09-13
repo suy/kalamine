@@ -7,7 +7,7 @@ from typing import List
 
 import click
 
-from .layout import KeyboardLayout, load_layout
+from .cli_utils import load_keyboard_layout
 from .msklc_manager import MsklcManager
 
 
@@ -55,7 +55,7 @@ def build(
         sys.exit("This command is only compatible with Windows, sorry.")
 
     for input_file in layout_descriptors:
-        layout = KeyboardLayout(load_layout(input_file), angle_mod, qwerty_shortcuts)
+        layout = load_keyboard_layout(input_file, angle_mod, qwerty_shortcuts)
         msklc_mgr = MsklcManager(layout, msklc, install=False, verbose=verbose)
         if msklc_mgr.build_msklc_installer():
             if msklc_mgr.build_msklc_dll():
@@ -104,7 +104,7 @@ def install(
         sys.exit("This command is only compatible with Windows, sorry.")
 
     for input_file in layout_descriptors:
-        layout = KeyboardLayout(load_layout(input_file), angle_mod, qwerty_shortcuts)
+        layout = load_keyboard_layout(input_file, angle_mod, qwerty_shortcuts)
         msklc_mgr = MsklcManager(layout, msklc, install=True, verbose=verbose)
         if msklc_mgr.build_msklc_installer():
             if msklc_mgr.build_msklc_dll():
@@ -132,7 +132,7 @@ def install(
 def dummy(input_file: Path, verbose: bool) -> None:
     """Dump a dummy TOML layout descriptor."""
 
-    input_layout = KeyboardLayout(load_layout(input_file))
+    input_layout = load_keyboard_layout(input_file)
     msklc_mgr = MsklcManager(input_layout, Path(DEFAULT_MSKLC_DIR), verbose=verbose)
     print(msklc_mgr._create_dummy_layout())
 
