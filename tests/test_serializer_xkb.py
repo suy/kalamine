@@ -80,7 +80,7 @@ def test_ansi():
         key <LSGT> {[ VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; //
 
         // Space bar
-        key <SPCE> {[ space           , space           , asterisk        , asterisk        ]}; //     * *
+        key <SPCE> {[ space           , space           , VoidSymbol      , VoidSymbol      ]}; //
         """
     )
 

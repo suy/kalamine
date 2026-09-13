@@ -225,14 +225,18 @@ class KeyboardLayout:
                 spc[k] = layout_data["spacebar"][k]
         self.layers[Layer.BASE]["spce"] = " "
         self.layers[Layer.SHIFT]["spce"] = spc["shift"]
-        if True or self.has_1dk:  # XXX self.has_1dk is not defined yet
-            self.layers[Layer.ODK]["spce"] = spc["1dk"]
-            self.layers[Layer.ODK_SHIFT]["spce"] = spc["1dk_shift"]
         if self.has_altgr:
             self.layers[Layer.ALTGR]["spce"] = spc["altgr"]
             self.layers[Layer.ALTGR_SHIFT]["spce"] = spc["altgr_shift"]
 
         self._parse_dead_keys(spc)
+
+        # 1dk spacebar: can only be filled after self.has_1dk is known
+        # (i.e. after parsing the dead keys), unless it leaks into layouts
+        # that have no 1dk key at all (e.g. the 4-level ANSI xkb output).
+        if self.has_1dk:
+            self.layers[Layer.ODK]["spce"] = spc["1dk"]
+            self.layers[Layer.ODK_SHIFT]["spce"] = spc["1dk_shift"]
 
     def _parse_dead_keys(self, spc: Dict[str, str]) -> None:
         """Build a deadkey dict."""

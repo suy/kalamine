@@ -5,6 +5,7 @@ import pytest
 from kalamine import KeyboardLayout, load_layout
 
 from .util import get_layout_dict
+from kalamine.utils import Layer
 
 
 def parse_layout(filename: str, angle_mod: bool = False) -> KeyboardLayout:
@@ -20,6 +21,8 @@ def test_ansi():
     assert not layout.has_altgr
     assert not layout.has_1dk
     assert "**" not in layout.dead_keys
+    assert "spce" not in layout.layers[Layer.ODK]
+    assert "spce" not in layout.layers[Layer.ODK_SHIFT]
 
     # ensure angle mod is NOT applied
     layout = parse_layout("ansi", angle_mod=True)
