@@ -89,6 +89,18 @@ def test_intl():  # 1dk + dead keys
     assert layout.layers[1]["ab01"] == "X"
 
 
+def test_spacebar():  # 1dk + 1dk_shift spacebar values
+    layout = parse_layout("intl")
+    assert layout.layers[2]["spce"] == "*"  # default 1dk spacebar
+    assert layout.layers[3]["spce"] == "*"  # default 1dk_shift spacebar
+
+    layout_data = get_layout_dict("intl")
+    layout_data["spacebar"] = {"1dk": "1", "1dk_shift": "2"}
+    layout = KeyboardLayout(layout_data)
+    assert layout.layers[2]["spce"] == "1"
+    assert layout.layers[3]["spce"] == "2"
+
+
 def test_recursive_extends(tmp_path: Path) -> None:
     """A layout can extend a layout that extends another one.
 
